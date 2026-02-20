@@ -1,0 +1,38 @@
+/* Fix for ResizeObserver issues with Radix UI components */
+
+/* Ensure Select components have stable dimensions */
+[data-radix-select-trigger] {
+    min-height: 40px;
+    transition: none !important;
+}
+
+[data-radix-select-content] {
+    max-height: 240px;
+    overflow-y: auto;
+    will-change: auto;
+}
+
+/* Prevent layout shifts in dialogs */
+[data-radix-dialog-content] {
+    will-change: auto;
+}
+
+/* Stabilize dropdown positioning */
+[data-radix-popper-content-wrapper] {
+    will-change: auto;
+}
+
+/* Reduce reflow triggers */
+.select-content-wrapper {
+    contain: layout style;
+}
+
+/* Smooth transitions without triggering ResizeObserver loops */
+.radix-select-item {
+    transition: background-color 0.1s ease;
+}
+
+/* Prevent unnecessary repaints */
+[data-state="open"] {
+    contain: layout;
+}

@@ -1,0 +1,64 @@
+{
+  "name": "sera-ai-nova-hackathon",
+  "version": "1.0.0",
+  "description": "Sera AI - Amazon Nova AI Hackathon 2026 Submission (Agentic AI Category)",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm start",
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "hackathon:setup": "npm run setup:nova && npm run setup:env",
+    "hackathon:demo": "bash demo.sh",
+    "hackathon:demo:frontend": "bash demo.sh --frontend-demo",
+    "setup:nova": "echo 'Setting up Amazon Nova AI configuration...' && npm run setup:backend:nova && npm run setup:frontend:nova",
+    "setup:backend:nova": "cd backend && npm install @aws-sdk/client-bedrock-runtime amazon-bedrock-ai-sdk langchain",
+    "setup:frontend:nova": "cd frontend && npm install @aws-sdk/client-bedrock-runtime amazon-bedrock-ai-sdk langchain",
+    "setup:env": "npm run setup:env:root && npm run setup:env:backend && npm run setup:env:frontend",
+    "setup:env:root": "cp .env.example .env",
+    "setup:env:backend": "cd backend && cp .env.example .env",
+    "setup:env:frontend": "cd frontend && cp .env.example .env",
+    "test:nova": "npm run test:backend:nova && npm run test:frontend:nova",
+    "test:backend:nova": "cd backend && npm test -- --testPathPattern=nova",
+    "test:frontend:nova": "cd frontend && npm test -- --testPathPattern=nova",
+    "build": "npm run build:backend && npm run build:frontend",
+    "build:backend": "cd backend && npm run build",
+    "build:frontend": "cd frontend && npm run build",
+    "start": "npm run start:backend",
+    "start:backend": "cd backend && npm start",
+    "start:frontend": "cd frontend && npm start",
+    "lint": "npm run lint:backend && npm run lint:frontend",
+    "lint:backend": "cd backend && npm run lint",
+    "lint:frontend": "cd frontend && npm run lint",
+    "prepare:submission": "npm run lint && npm run build && npm run test:nova"
+  },
+  "keywords": [
+    "amazon-nova",
+    "ai-hackathon",
+    "agentic-ai",
+    "brand-creator-matching",
+    "aws-bedrock",
+    "foundation-models",
+    "react",
+    "node.js",
+    "mongodb",
+    "express"
+  ],
+  "author": "Sera AI Team",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/sera-ai-nova-hackathon"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/sera-ai-nova-hackathon/issues"
+  },
+  "homepage": "https://github.com/your-username/sera-ai-nova-hackathon#readme"
+}
